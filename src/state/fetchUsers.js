@@ -2,9 +2,9 @@ const SET_USERS = 'fetchUsers/SET_USERS'
 const USERS_STARTED_LOADING = 'fetchUsers/USERS_STARTED_LOADING'
 const USERS_STOPPED_LOADING = 'fetchUsers/USERS_STOPPED_LOADING'
 
-export const setUsersAction = data => ({ type: SET_USERS, data })
-export const usersStartedLoadingAction = () => ({ type: USERS_STARTED_LOADING })
-export const usersStoppedLoadingAction = () => ({ type: USERS_STOPPED_LOADING })
+const setUsersAction = data => ({ type: SET_USERS, data })
+const usersStartedLoadingAction = () => ({ type: USERS_STARTED_LOADING })
+const usersStoppedLoadingAction = () => ({ type: USERS_STOPPED_LOADING })
 
 export const fetchUsersAction = () => (dispatch,getState) => {
     dispatch(usersStartedLoadingAction())
