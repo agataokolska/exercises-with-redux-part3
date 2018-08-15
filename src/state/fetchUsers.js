@@ -1,5 +1,7 @@
+
+
 const initialState ={}
 
-export default (state, action) => {
+export default (state = initialState, action) => {
     return state
 }

@@ -1,8 +1,9 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
+import fetchUsers from './state/fetchUsers'
 
-const reducers = combineReducers({
-    //TODO put reducers here
+const reducer = combineReducers({
+    fetchUsers
 })
 
 const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose
