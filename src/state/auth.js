@@ -1,19 +1,32 @@
-import {auth as firebaseAuth} from '../firebaseConfig'
+import { auth as firebaseAuth } from '../firebaseConfig'
 
 const EMAIL_CHANGE = 'auth/EMAIL_CHANGE'
 const PASSWORD_CHANGE = 'auth/PASSWORD_CHANGE'
 const SET_USER = 'auth/SET_USER'
 
-export const onEmailChangeAction = value => ({type:EMAIL_CHANGE, value})
-export const onPasswordChangeAction = value => ({type:PASSWORD_CHANGE, value})
-export const onLoginClickAction = () => (dispatch, getState) =>{
+export const onEmailChangeAction = value => ({ type: EMAIL_CHANGE, value })
+export const onPasswordChangeAction = value => ({ type: PASSWORD_CHANGE, value })
+export const setUserAction = user => ({ type: SET_USER, user })
+
+export const initAuthStateListening = () => (dispatch, getState) => {
+    firebaseAuth.onAuthStateChanged(user => {
+        if (user) {
+            dispatch(setUserAction(user))
+        } else {
+            dispatch(setUserAction(user)) //user is null if user is logged out
+        }
+        
+    })
+}
+
+export const onLoginClickAction = () => (dispatch, getState) => {
     const state = getState()
 
     firebaseAuth.signInWithEmailAndPassword(
-        state.auth.email, 
+        state.auth.email,
         state.auth.password)
-    .then(()=> console.log('LOGIN OK'))
-    .catch(()=> console.log('LOGIN ERROR'))
+        .then(() => console.log('LOGIN OK'))
+        .catch(() => console.log('LOGIN ERROR'))
 }
 
 const initialState = {
@@ -34,6 +47,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 password: action.value
+            }
+        case SET_USER:
+            return {
+                ...state,
+                user: action.user
             }
         default:
             return state
