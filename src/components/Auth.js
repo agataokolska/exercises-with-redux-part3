@@ -21,7 +21,7 @@ const Auth = (props) => (
         </div>
         <div>
             <button
-            oncClick={props._onLoginClick}>
+            onClick={props._onLoginClick}>
                 LOGIN!
             </button>
         </div>
