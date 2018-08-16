@@ -11,11 +11,11 @@ export const setUserAction = user => ({ type: SET_USER, user })
 export const initAuthStateListening = () => (dispatch, getState) => {
     firebaseAuth.onAuthStateChanged(user => {
         if (user) {
-            dispatch(setUserAction(user))
+           //here is a good place to dispatch after login actions
         } else {
-            dispatch(setUserAction(user)) //user is null if user is logged out
+            //here is good place to dispatch after logOut actions
         }
-        
+        dispatch(setUserAction(user)) //user is null if user is logged out
     })
 }
 
