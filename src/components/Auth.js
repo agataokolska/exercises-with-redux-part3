@@ -6,7 +6,8 @@ import {onEmailChangeAction,
 import LoginByEmailAndPassword from './LoginByEmailAndPassword'
 
 const Auth = (props) => (
-
+    props._user ?
+    props.children :
     <div>
         <LoginByEmailAndPassword
         emailValue={props._emailValue}
@@ -20,7 +21,8 @@ const Auth = (props) => (
 )
 const mapStateToProps = state => ({
 _emailValue: state.auth.email,
-_passwordValue: state.auth.password
+_passwordValue: state.auth.password,
+_user: state.auth.user
 })
 
 const mapDispatchToProps = dispatch => ({

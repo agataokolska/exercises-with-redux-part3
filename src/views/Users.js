@@ -4,10 +4,15 @@ import { connect } from 'react-redux'
 const Users = (props) => (
 
     <div>
-        {
-            props._users && props._users.results.map((user, i) => (
+        {   props._isUsersAreLoading ?
+            'Loading'
+            :
+            props._users ?
+            props._users.results.map((user, i) => (
                 <p>{user.name.first} {user.name.last}</p>
             ))
+            :
+            'No users!'
         }
     </div>
 )
