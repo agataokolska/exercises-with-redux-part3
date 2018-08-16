@@ -2,6 +2,7 @@ import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import fetchUsers,{fetchUsersAction} from './state/fetchUsers'
 
+
 const reducer = combineReducers({
     fetchUsers
 })

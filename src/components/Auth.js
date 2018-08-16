@@ -1,5 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {onEmailChangeAction,
+    onPasswordChangeAction,
+    onLoginClickAction} from '../state/auth'
 
 const Auth = (props) => (
 
@@ -33,4 +36,4 @@ _onLoginClick: () => dispatch(onLoginClickAction())
 })
 
 export default connect(mapStateToProps,
-    mapDispatchToProps)(Users)
+    mapDispatchToProps)(Auth)
