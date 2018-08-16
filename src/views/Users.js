@@ -5,12 +5,9 @@ const Users = (props) => (
 
     <div>
         {
-            props._isUsersAreLoading ?
-                'Users are loading'
-                :
-                props._users.results.map((user, i) => (
-                    <p>{user.name.first} {user.name.last}</p>
-                ))
+            props._users && props._users.results.map((user, i) => (
+                <p>{user.name.first} {user.name.last}</p>
+            ))
         }
     </div>
 )
