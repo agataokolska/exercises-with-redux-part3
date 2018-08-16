@@ -1,4 +1,5 @@
 import { auth as firebaseAuth } from '../firebaseConfig'
+import { fetchUsersAction } from './fetchUsers';
 
 const EMAIL_CHANGE = 'auth/EMAIL_CHANGE'
 const PASSWORD_CHANGE = 'auth/PASSWORD_CHANGE'
@@ -10,12 +11,15 @@ export const setUserAction = user => ({ type: SET_USER, user })
 
 export const initAuthStateListening = () => (dispatch, getState) => {
     firebaseAuth.onAuthStateChanged(user => {
+        dispatch(setUserAction(user)) //user is null if user is logged out
+
         if (user) {
+            dispatch(fetchUsersAction())  //fetching users from randomuserme after loging in
            //here is a good place to dispatch after login actions
         } else {
             //here is good place to dispatch after logOut actions
         }
-        dispatch(setUserAction(user)) //user is null if user is logged out
+        
     })
 }
 
