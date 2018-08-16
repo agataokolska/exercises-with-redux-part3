@@ -6,16 +6,17 @@ const Auth = (props) => (
     <div>
         <div>
             <input type="email" 
-            onChange={()=>{}}
+            onChange={props._onEmailChange}
             />
         </div>
         <div>
             <input type="password" 
-            onChange={()=>{}}
+            onChange={props._onPasswordChange}
             />
         </div>
         <div>
-            <button>
+            <button
+            oncClick={props._onLoginClick}>
                 LOGIN!
             </button>
         </div>
@@ -26,8 +27,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-_onEmailChange = () => dispatch(onEmailChangeAction()),
-_onPasswordChange = () => dispatch(onPasswordChangeAction())
+_onEmailChange: event => dispatch(onEmailChangeAction(event.target.value)),
+_onPasswordChange: event => dispatch(onPasswordChangeAction(event.target.value)),
+_onLoginClick: () => dispatch(onLoginClickAction())
 })
 
 export default connect(mapStateToProps,
