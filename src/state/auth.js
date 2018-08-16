@@ -23,6 +23,12 @@ export const initAuthStateListening = () => (dispatch, getState) => {
     })
 }
 
+export const onLogOutAction = () =>(dispatch, getState) => {
+    firebaseAuth.signOut()
+    .then(() => console.log('SIGN OUT OK'))
+    .catch(() => console.log('SIGN OUT ERROR'))
+}
+
 export const onLoginClickAction = () => (dispatch, getState) => {
     const state = getState()
 
