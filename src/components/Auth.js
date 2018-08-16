@@ -3,28 +3,19 @@ import { connect } from 'react-redux'
 import {onEmailChangeAction,
     onPasswordChangeAction,
     onLoginClickAction} from '../state/auth'
+import LoginByEmailAndPassword from './LoginByEmailAndPassword'
 
 const Auth = (props) => (
 
     <div>
-        <div>
-            <input type="email" 
-            value={props._emailValue}
-            onChange={props._onEmailChange}
-            />
-        </div>
-        <div>
-            <input type="password" 
-            value={props._passwordValue}
-            onChange={props._onPasswordChange}
-            />
-        </div>
-        <div>
-            <button
-            onClick={props._onLoginClick}>
-                LOGIN!
-            </button>
-        </div>
+        <LoginByEmailAndPassword
+        emailValue={props._emailValue}
+        onEmailChange={props._onEmailChange}
+        passwordValue={props._passwordValue}
+        onPasswordChange={props._onPasswordChange}
+        onLoginClick={props._onLoginClick}
+
+        />
     </div>
 )
 const mapStateToProps = state => ({

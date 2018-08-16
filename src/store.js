@@ -1,7 +1,7 @@
 import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
-import fetchUsers,{fetchUsersAction} from './state/fetchUsers'
-import auth from './state/auth'
+import fetchUsers from './state/fetchUsers'
+import auth, {initAuthStateListening} from './state/auth'
 
 const reducer = combineReducers({
     fetchUsers,
@@ -17,4 +17,4 @@ export const store = createStore(
     )
 )
 
-store.dispatch(fetchUsersAction())
+store.dispatch(initAuthStateListening())
